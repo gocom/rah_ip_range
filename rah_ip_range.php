@@ -1,15 +1,17 @@
-<?php	##################
-	#
-	#	rah_ip_range-plugin for Textpattern
-	#	version 0.3
-	#	by Jukka Svahn
-	#	http://rahforum.biz
-	#
-	#	Copyright (C) 2011 Jukka Svahn <http://rahforum.biz>
-	#	Licensed under GNU Genral Public License version 2
-	#	http://www.gnu.org/licenses/gpl-2.0.html
-	#
-	##################
+<?php
+
+/**
+ * Rah_ip_range plugin for Textpattern CMS
+ *
+ * @author Jukka Svahn
+ * @date 2008-
+ * @license GNU GPLv2
+ * @link http://rahforum.biz/plugins/rah_ip_range
+ *
+ * Copyright (C) 2012 Jukka Svahn <http://rahforum.biz>
+ * Licensed under GNU Genral Public License version 2
+ * http://www.gnu.org/licenses/gpl-2.0.html
+ */
 
 	function rah_ip_range($atts, $thing=NULL) {
 
