@@ -1,38 +1,46 @@
-<?php 	################
+<?php	##################
 	#
 	#	rah_ip_range-plugin for Textpattern
-	#	version 0.1
+	#	version 0.2
 	#	by Jukka Svahn
 	#	http://rahforum.biz
 	#
-	################
+	#	Copyright (C) 2011 Jukka Svahn <http://rahforum.biz>
+	#	Licensed under GNU Genral Public License version 2
+	#	http://www.gnu.org/licenses/gpl-2.0.html
+	#
+	##################
 
-	function rah_ip_range($atts) {
+	function rah_ip_range($atts, $thing=NULL) {
+
 		extract(lAtts(array(
 			'message' => 'Access denied',
 			'status' => '503',
 			'fromip' => '',
 			'toip' => '',
-			'method' => 'allow',
+			'method' => 'allow'
 		),$atts));
-		
+
 		$from = ip2long($fromip);
 		$to = ip2long($toip);
-		$user_ip = ip2long($_SERVER['REMOTE_ADDR']);
-		if($user_ip >= $from && $user_ip <= $to) {
-			$check = true;
-		} else $check = false;
-		switch($method) {
-			case 'deny' : 
-				if($check == true) txp_die(array('msg' => $message,'status' => $status));
-			break;
-			case 'allow' :
-				if($check == false) txp_die(array('msg' => $message,'status' => $status));
-			break;
-			default : 
-				if($check == true) txp_die(array('msg' => $message,'status' => $status));
-			break;
+		$user_ip = ip2long(remote_addr());
+		$check = ($user_ip >= $from && $user_ip <= $to);
+
+		if(
+			($method != 'allow' && $check) ||
+			($method == 'allow' && !$check)
+		) {
+			if($thing === NULL)
+				txp_die(
+					array(
+						'msg' => $message,
+						'status' => $status
+					)
+				);
+			
+			return parse($message);
 		}
-		return '';
+
+		return $thing !== NULL ? parse($thing) : '';
 	}
 ?>
