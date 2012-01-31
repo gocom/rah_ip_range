@@ -1,7 +1,7 @@
 <?php	##################
 	#
 	#	rah_ip_range-plugin for Textpattern
-	#	version 0.2
+	#	version 0.3
 	#	by Jukka Svahn
 	#	http://rahforum.biz
 	#
@@ -31,14 +31,9 @@
 			($method == 'allow' && !$check)
 		) {
 			if($thing === NULL)
-				txp_die(
-					array(
-						'msg' => $message,
-						'status' => $status
-					)
-				);
-			
-			return parse($message);
+				txp_die($message, $status);
+						
+			return $message;
 		}
 
 		return $thing !== NULL ? parse($thing) : '';
