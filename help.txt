@@ -1,0 +1,54 @@
+h1. rah_ip_range
+
+p. Block or allow visitors based on their IP. You can define a IP range, and what to do those whose IP is within the range; either allow, or opposite, deny them and allow others outside that range to see the page.
+
+* Version: 0.1
+* Updated: 2008/10/31 3:50 AM GMT+2
+
+h3. Table of Contents
+
+* "List of features":#list-of-features
+* "Attributes":#attributes
+* "Example":#example
+* "Changelog":#changelog
+
+h3(#list-of-features). List of features
+
+* Block visitors based on the IP -range.
+* Comes with a simple customizable tag, @<txp:rah_ip_range />@. Include the tag on, section/page templates/forms, where you want the IP ranged blocking/allowing take place.
+* Returns Textpattern's error page when user is blocked/access denied.
+* Customizable error message and HTTP-status - and of course Textpattern's error page templates.
+
+h3(#attributes). Attributes
+
+p. The tag is @<txp:rah_ip_range />@ attributes for it follow. Use the tag on places (pages/forms/sections) which you want to restrict from visitors.
+
+p. *message*
+Error message shown to blocked visitors. Message can be shown with the @<txp:error_message />@ tag.
+Default: @message="Access denied"@ Example: @"KO"@
+
+p. *status*
+HTTP error status code returned to blocked visitors.
+Default: @status="503"@ Example: @"200"@
+
+p. *fromip*
+IP-range's starting IP (or partial IP). Default unset.
+Default: @fromip=""@ Example: @"127.0.0.1"@
+
+p. *toip*
+IP-range's ending IP (or partial IP). Default unset.
+Default: @toip=""@ Example: @"127.0.0.100"@
+
+p. *method*
+What to do to the visitor when IP is within the range; either @deny@ or @allow@. Value @deny@ means that all visitors within the range are blocked, and others (outside) are allowed to see the page. Value @allow@ is opposite to @deny@.
+Default: @method="allow"@ Example: @"deny"@
+
+h3(#example). Example
+
+bc. <txp:rah_ip_range fromip="127.0.0.1" toip="127.0.0.100" method="deny" />
+
+h3(#changelog). Changelog
+
+p. *Version 0.1*
+
+* First release
