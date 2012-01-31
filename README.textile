@@ -2,24 +2,14 @@ h1. rah_ip_range
 
 p. Elegant "Textpattern CMS":http://www.textpattern.com plugin for blocking and allowing visitors based on their IP. You can define an IP range, and what to do to those whose IP is within the range; either allow, or the opposite, deny access to the page content. Powered by a single little tag.
 
-* Version: 0.3
-* Updated: 2011/06/29 4:00 AM UTC
-
-h3. Table of Contents
-
-* "List of features":#list-of-features
-* "Attributes":#attributes
-* "Examples":#examples
-* "Changelog":#changelog
-
-h3(#list-of-features). List of features
+h2. List of features
 
 * Deny and allow visitors with IP ranges.
 * Comes with a simple customizable tag, @<txp:rah_ip_range />@. Include the tag anywhere on your page templates and forms, where you want the blocking take place.
 * Blocked visitors will see Textpattern's native, customizable error page. Error messages and returned error status is fully configurable.
 * Alternatively the tag can be used as a container. When container is used, the contained content is hidden from blocked visitors, instead of showing an error page.
 
-h3(#attributes). Attributes
+h2. Attributes
 
 p. The tag is @<txp:rah_ip_range />@ attributes for it follow. Use the tag on places (pages/forms/sections) which you want to restrict from specific visitors.
 
@@ -43,15 +33,15 @@ p. *method*
 Sets what to do to the visitor when IP is within the range. Either @deny@ or @allow@. When set to @deny@, all visitors within the range are blocked, and others outside the range are allowed to see the content. Value @allow@ is opposite to the @deny@.
 Default: @method="allow"@ Example: @"deny"@
 
-h3(#examples). Examples
+h2. Examples
 
-p. *Example #1: Using the self-closing single tag.*
+h3. Using the self-closing single tag.
 
 bc. <txp:rah_ip_range fromip="127.0.0.1" toip="127.0.0.100" method="deny" />
 
 p. Visitors within the range 127.0.0.1-127.0.0.100 are blocked will see an error page.
 
-p. *Example #2: Using the tags as a container.*
+h3. Using the tags as a container.
 
 bc. Important link:
 <txp:rah_ip_range fromip="127.0.0.1" toip="127.0.0.100" method="allow" message="Link is hidden.">
@@ -60,17 +50,17 @@ bc. Important link:
 
 p. Visitors within the range 127.0.0.1-127.0.0.100 will see an important link, while others won't. Instead they are treated with _"Link is hidden."_ message where the link should be.
 
-h3(#changelog). Changelog
+h2. Changelog
 
-p. *Version 0.3*
+h3. Version 0.3 - 2011/06/29
 
 * Changed: parsing contents of @message@ isn't needed. Parser's straight quote feature can be used instead.
 * Changed: pass parameters to @txp_die()@ as strings instead of an array.
 
-p. *Version 0.2*
+h3. Version 0.2 - 2011/06/25
 
 * Added: container tag mode.
 
-p. *Version 0.1*
+h3. Version 0.1 - 2008/10/31
 
 * Initial release.
