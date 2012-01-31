@@ -1,24 +1,24 @@
 h1. rah_ip_range
 
-p. Elegant "Textpattern CMS":http://www.textpattern.com plugin for blocking and allowing visitors based on their IP. You can define an IP range, and what to do to those whose IP is within the range; either allow, or the opposite, deny access to the page content. Powered by a single little tag.
+p. An elegant "Textpattern CMS":http://www.textpattern.com plugin for blocking and allowing visitors' access based on IP addresses. The plugin comes with a single little TXP tag that takes an IP address range, and an executed action. The tag can either be used to hide parts of a page, or to invoke an error page.
 
 h2. List of features
 
 * Deny and allow visitors with IP ranges.
-* Comes with a simple customizable tag, @<txp:rah_ip_range />@. Include the tag anywhere on your page templates and forms, where you want the blocking take place.
+* Comes with a simple tag, @<txp:rah_ip_range />@. Include the tag anywhere on your "page templates":http://textpattern.net/wiki/index.php?title=Pages and "forms":http://textpattern.net/wiki/index.php?title=Forms you want the blocking to take place.
 * Blocked visitors will see Textpattern's native, customizable error page. Error messages and returned error status is fully configurable.
-* Alternatively the tag can be used as a container. When container is used, the contained content is hidden from blocked visitors, instead of showing an error page.
+* Alternatively the tag can be used as a container. The wrapped content is hidden from blocked visitors, instead of showing an error page.
 
 h2. Attributes
 
 p. The tag is @<txp:rah_ip_range />@ attributes for it follow. Use the tag on places (pages/forms/sections) which you want to restrict from specific visitors.
 
 p. *message*
-Error message shown to blocked visitors. Message can be shown with the @<txp:error_message />@ tag. If the tag is used as a container, the message is shown instead of the contained content to the blocked users.
+Error message shown to blocked visitors. The message can be displayed with the "error_message":http://textpattern.net/wiki/index.php?title=error_message tag. If the rah_ip_range tag is used as a container, the message is shown to the blocked visitors, instead of the wrapped content.
 Default: @message="Access denied"@ Example: @"Sorry, we can not do that."@
 
 p. *status*
-HTTP error status code returned to blocked visitors. The preferences will be ignored when the tag is used as a container.
+HTTP error status code returned to blocked visitors. The option is ignored when the tag is used as a container.
 Default: @status="503"@ Example: @"200"@
 
 p. *fromip*
@@ -39,7 +39,7 @@ h3. Using the self-closing single tag.
 
 bc. <txp:rah_ip_range fromip="127.0.0.1" toip="127.0.0.100" method="deny" />
 
-p. Visitors within the range 127.0.0.1-127.0.0.100 are blocked will see an error page.
+p. Visitors within the range of 127.0.0.1-127.0.0.100 are blocked will see an error page.
 
 h3. Using the tags as a container.
 
