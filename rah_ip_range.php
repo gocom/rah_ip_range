@@ -16,8 +16,8 @@
 	function rah_ip_range($atts, $thing=NULL) {
 
 		extract(lAtts(array(
-			'message' => 'Access denied',
-			'status' => '503',
+			'message' => '',
+			'status' => '403',
 			'fromip' => '',
 			'toip' => '',
 			'method' => 'allow'
