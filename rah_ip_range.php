@@ -21,19 +21,20 @@
 			'fromip' => '',
 			'toip' => '',
 			'method' => 'allow'
-		),$atts));
+		), $atts));
 
 		$from = ip2long($fromip);
 		$to = ip2long($toip);
 		$user_ip = ip2long(remote_addr());
-		$check = ($user_ip >= $from && $user_ip <= $to);
+		$check = $user_ip >= $from && $user_ip <= $to;
 
 		if(
 			($method != 'allow' && $check) ||
 			($method == 'allow' && !$check)
 		) {
-			if($thing === NULL)
+			if($thing === NULL) {
 				txp_die($message, $status);
+			}
 						
 			return $message;
 		}
