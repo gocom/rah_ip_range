@@ -16,7 +16,7 @@
 	function rah_ip_range($atts, $thing=NULL) {
 
 		extract(lAtts(array(
-			'message' => '',
+			'message' => gTxt('403_forbidden'),
 			'status' => '403',
 			'fromip' => '',
 			'toip' => '',
