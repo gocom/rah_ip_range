@@ -14,7 +14,7 @@ h2. Attributes
 p. The tag is @<txp:rah_ip_range />@ attributes for it follow. Use the tag on places (pages/forms/sections) which you want to restrict from specific visitors.
 
 p. *message*
-Error message shown to blocked visitors. The message can be displayed with the "error_message":http://textpattern.net/wiki/index.php?title=error_message tag. If the rah_ip_range tag is used as a container, the message is shown to the blocked visitors, instead of the wrapped content.
+Error message shown to blocked visitors. The message can be displayed with the "error_message":http://textpattern.net/wiki/index.php?title=error_message tag.
 Default: @message="Forbidden."@ Example: @"Sorry, can not do that."@
 
 p. *status*
@@ -37,15 +37,17 @@ h2. Examples
 
 h3. Using the self-closing single tag.
 
-bc. <txp:rah_ip_range fromip="127.0.0.1" toip="127.0.0.100" method="deny" />
+bc. <txp:rah_ip_range fromip="127.0.0.1" toip="127.0.0.100" method="deny" message="Access denied." />
 
 p. Visitors within the range of 127.0.0.1-127.0.0.100 are blocked will see an error page.
 
 h3. Using the tags as a container.
 
 bc. Important link:
-<txp:rah_ip_range fromip="127.0.0.1" toip="127.0.0.100" method="allow" message="Link is hidden.">
+<txp:rah_ip_range fromip="127.0.0.1" toip="127.0.0.100" method="allow">
 	<a href="http://example.com">Click here</a>.
+<txp:else />
+	Link is hidden.
 </txp:rah_ip_range>
 
 p. Visitors within the range 127.0.0.1-127.0.0.100 will see an important link, while others won't. Instead they are treated with _"Link is hidden."_ message where the link should be.
@@ -54,8 +56,10 @@ h2. Changelog
 
 h3. Version 0.4 - upcoming
 
+* Added: "else":http://textpattern.net/wiki/index.php?title=else (@<txp:else />@) tag support for container mode.
 * Changed: default HTTP status to _403 Forbidden_ from _503 Service Unavailable_.
 * Changed: default message to @Forbidden.@, @403_forbidden@ l18n string.
+* Changed: @message@ attribute doesn't apply when tag is used as a container, instead of "else":http://textpattern.net/wiki/index.php?title=else can be used.
 
 h3. Version 0.3 - 2011/06/29
 
