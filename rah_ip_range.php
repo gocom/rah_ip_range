@@ -35,10 +35,10 @@
 			if($thing === NULL) {
 				txp_die($message, $status);
 			}
-						
-			return $message;
+			
+			return parse(EvalElse($thing, false));
 		}
 
-		return $thing !== NULL ? parse($thing) : '';
+		return $thing !== NULL ? parse(EvalElse($thing, true)) : '';
 	}
 ?>
