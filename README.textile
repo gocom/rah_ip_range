@@ -1,6 +1,6 @@
 h1. rah_ip_range
 
-p. An elegant "Textpattern CMS":http://www.textpattern.com plugin for blocking and allowing visitors' access based on IP addresses. The plugin comes with a single little TXP tag that takes an IP address range, and an executed action. The tag can either be used to hide parts of a page, or to invoke an error page.
+p. An elegant "Textpattern CMS":http://www.textpattern.com plugin for blocking and allowing visitors' access based on IP addresses. The plugin comes with a single little Textpattern tag that takes an IP address range, and an executed action. The tag can either be used to hide parts of a page, or to invoke an error page.
 
 h2. List of features
 
@@ -9,48 +9,57 @@ h2. List of features
 * Blocked visitors will see Textpattern's native, customizable error page. Error messages and returned error status is fully configurable.
 * Alternatively the tag can be used as a container. The wrapped content is hidden from blocked visitors, instead of showing an error page.
 
+h2. Basic
+
+bc. <txp:rah_ip_range fromip="127.0.0.1" toip="127.0.0.1" method="deny">
+	...contained statements...
+</txp:rah_ip_range>
+
+p. The plugin introduces a new Textpattern tag, @<txp:rah_ip_range />@. The tag can be used to restrict visitor's access to certain parts of page template content or full pages based on their IP address. The tag takes an IP range, set by @fromip@ and @toip@ attributes. A visitor that is in the specified range will be either denied or allowed access to the content based on @method@ attribute's setting.
+
+p. The tag can be used both as a container and as a self-closing single tag. When used as single tag, the tag invokes an error page when the visitor is within denied range. As a container, the tag hides the wrapped content, but doesn't invoke an error page. A container can also take a @<txp:else/>@ statement.
+
 h2. Attributes
 
-p. The tag is @<txp:rah_ip_range />@ attributes for it follow. Use the tag on places (pages/forms/sections) which you want to restrict from specific visitors.
+p. Attributes for @<txp:rah_ip_range />@ are as follows.
 
 p. *message*
 Error message shown to blocked visitors. The message can be displayed with the "error_message":http://textpattern.net/wiki/index.php?title=error_message tag.
-Default: @message="Forbidden."@ Example: @"Sorry, can not do that."@
+Example: @message="Sorry, we can not do that."@ Default: @"Forbidden."@
 
 p. *status*
 HTTP error status code returned to blocked visitors. The option is ignored when the tag is used as a container.
-Default: @status="503"@ Example: @"200"@
+Example: @status="404"@ Default: @"403"@
 
 p. *fromip*
 IP-range's starting IP (or partial IP). Default is unset.
-Default: @fromip=""@ Example: @"127.0.0.1"@
+Example: @fromip="127.0.0.1"@ Default: @""@
 
 p. *toip*
 IP-range's ending IP (or partial IP). Default is unset.
-Default: @toip=""@ Example: @"127.0.0.100"@
+Example: @toip="127.0.0.100"@ Default: @""@
 
 p. *method*
 Sets what to do to the visitor when IP is within the range. Either @deny@ or @allow@. When set to @deny@, all visitors within the range are blocked, and others outside the range are allowed to see the content. Value @allow@ is opposite to the @deny@.
-Default: @method="allow"@ Example: @"deny"@
+Example: @method="deny"@ Default: @"allow"@
 
 h2. Examples
 
-h3. Using the self-closing single tag.
+h3. Using the self-closing single tag
 
 bc. <txp:rah_ip_range fromip="127.0.0.1" toip="127.0.0.100" method="deny" message="Access denied." />
 
 p. Visitors within the range of 127.0.0.1-127.0.0.100 are blocked will see an error page.
 
-h3. Using the tags as a container.
+h3. Using the tags as a container
 
-bc. Important link:
-<txp:rah_ip_range fromip="127.0.0.1" toip="127.0.0.100" method="allow">
-	<a href="http://example.com">Click here</a>.
+bc. <txp:rah_ip_range fromip="127.0.0.1" toip="127.0.0.100">
+	<a href="http://example.com">Important link</a>.
 <txp:else />
 	Link is hidden.
 </txp:rah_ip_range>
 
-p. Visitors within the range 127.0.0.1-127.0.0.100 will see an important link, while others won't. Instead they are treated with _"Link is hidden."_ message where the link should be.
+p. Visitors within the range 127.0.0.1-127.0.0.100 will see an important link, while others won't. Instead they are treated with _"Link is hidden."_ message where the link would be.
 
 h2. Changelog
 
