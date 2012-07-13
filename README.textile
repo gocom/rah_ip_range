@@ -9,7 +9,7 @@ h2. List of features
 * Blocked visitors will see Textpattern's native, customizable error page. Error messages and returned error status is fully configurable.
 * Alternatively the tag can be used as a container. The wrapped content is hidden from blocked visitors, instead of showing an error page.
 
-h2. Basic
+h2. Basics
 
 bc. <txp:rah_ip_range fromip="127.0.0.1" toip="127.0.0.1" method="deny">
 	...contained statements...
