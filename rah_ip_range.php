@@ -35,7 +35,7 @@
 			if($thing === NULL) {
 				txp_die($message, $status);
 			}
-			
+
 			return parse(EvalElse($thing, false));
 		}
 
