@@ -17,7 +17,7 @@ bc. <txp:rah_ip_range fromip="127.0.0.1" toip="127.0.0.1" method="deny">
 
 p. The plugin introduces a new Textpattern tag, @<txp:rah_ip_range />@. The tag can be used to restrict visitor's access to certain parts of page template content or full pages based on their IP address. The tag takes an IP range, set by @fromip@ and @toip@ attributes. A visitor that is in the specified range will be either denied or allowed access to the content based on @method@ attribute's setting.
 
-p. The tag can be used both as a container and as a self-closing single tag. When used as single tag, the tag invokes an error page when the visitor is within denied range. As a container, the tag hides the wrapped content, but doesn't invoke an error page. A container can also take a @<txp:else/>@ statement.
+p. The tag can be used both as a container and as a self-closing single tag. When used as single tag, the tag invokes an error page when the visitor is within denied range. As a container, the tag hides the wrapped content, but doesn't invoke an error page. A container can also take a "else":http://textpattern.net/wiki/index.php?title=else statement.
 
 h2. Attributes
 
