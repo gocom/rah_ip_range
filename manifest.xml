@@ -3,7 +3,7 @@
 	<name>rah_ip_range</name>
 	<description>Allow and block visitors based on an IP range</description>
 	
-	<version>0.3</version>
+	<version>0.4</version>
 	<type>0</type>
 	
 	<author>Jukka Svahn</author>

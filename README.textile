@@ -63,7 +63,7 @@ p. Visitors within the range 127.0.0.1-127.0.0.100 will see an important link, w
 
 h2. Changelog
 
-h3. Version 0.4 - upcoming
+h3. Version 0.4 - 2012/07/13
 
 * Added: "else":http://textpattern.net/wiki/index.php?title=else (@<txp:else />@) tag support for container mode.
 * Changed: default HTTP status to _403 Forbidden_ from _503 Service Unavailable_.
