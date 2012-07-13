@@ -1,13 +1,13 @@
 h1. rah_ip_range
 
-p. An elegant "Textpattern CMS":http://www.textpattern.com plugin for blocking and allowing visitors' access based on IP addresses. The plugin comes with a single little Textpattern tag that takes an IP address range, and an executed action. The tag can either be used to hide parts of a page, or to invoke an error page.
+p. Rah_ip_range is a "Textpattern CMS":http://www.textpattern.com plugin for restricting visitors' access to certain parts of site content based on their IP addresses. The plugin introduces a little Textpattern tag that takes an IP address range and an executed action. The tag can either be used to hide parts of a page template or to invoke a customizable error page.
 
 h2. List of features
 
-* Deny and allow visitors with IP ranges.
-* Comes with a simple tag, @<txp:rah_ip_range />@. Include the tag anywhere on your "page templates":http://textpattern.net/wiki/index.php?title=Pages and "forms":http://textpattern.net/wiki/index.php?title=Forms you want the blocking to take place.
-* Blocked visitors will see Textpattern's native, customizable error page. Error messages and returned error status is fully configurable.
-* Alternatively the tag can be used as a container. The wrapped content is hidden from blocked visitors, instead of showing an error page.
+* Deny and allow visitors from accessing site content with IP ranges.
+* Comes with a simple tag, @<txp:rah_ip_range />@. Include the tag anywhere in your "page templates":http://textpattern.net/wiki/index.php?title=Pages and "form partials":http://textpattern.net/wiki/index.php?title=Forms you want restricting to take place.
+* Blocked visitors can be set to see a Textpattern's native, customizable error page. Error messages and status codes are fully configurable.
+* Alternatively, the plugin can be used to hide certain parts of a page, without invoking an error page.
 
 h2. Basics
 
@@ -17,7 +17,7 @@ bc. <txp:rah_ip_range fromip="127.0.0.1" toip="127.0.0.1" method="deny">
 
 p. The plugin introduces a new Textpattern tag, @<txp:rah_ip_range />@. The tag can be used to restrict visitor's access to certain parts of page template content or full pages based on their IP address. The tag takes an IP range, set by @fromip@ and @toip@ attributes. A visitor that is in the specified range will be either denied or allowed access to the content based on @method@ attribute's setting.
 
-p. The tag can be used both as a container and as a self-closing single tag. When used as single tag, the tag invokes an error page when the visitor is within denied range. As a container, the tag hides the wrapped content, but doesn't invoke an error page. A container can also take a "else":http://textpattern.net/wiki/index.php?title=else statement.
+p. The tag can be used both as a container and as a self-closing single tag. When used as single tag, the tag invokes an error page when the visitor is within denied range. As a container, the tag hides the wrapped content, but doesn't invoke an error page. A container can also take a "else":http://textpattern.net/wiki/index.php?title=else statement, which is served as an alternative content to denied visitors.
 
 h2. Attributes
 
