@@ -1,74 +1,73 @@
 h1. rah_ip_range
 
-p. Rah_ip_range is a "Textpattern CMS":http://www.textpattern.com plugin for restricting visitors' access to certain parts of site content based on their IP addresses. The plugin introduces a little Textpattern tag that takes an IP address range and an executed action. The tag can either be used to hide parts of a page template or to invoke a customizable error page.
+"Packagist":https://packagist.org/packages/rah/rah_ip_range | "Issues":https://github.com/gocom/rah_ip_range/issues
 
-h2. List of features
+Rah_ip_range is a "Textpattern CMS":https://textpattern.com plugin for restricting visitors' access to certain parts of site content based on their IP addresses. The plugin introduces a little Textpattern tag that takes an IP address range and an executed action. The tag can either be used to hide parts of a page template or to invoke a customizable error page.
 
-* Deny and allow visitors from accessing site content with IP ranges.
-* Comes with a simple tag, @<txp:rah_ip_range />@. Include the tag anywhere in your "page templates":http://textpattern.net/wiki/index.php?title=Pages and "form partials":http://textpattern.net/wiki/index.php?title=Forms you want restricting to take place.
-* Blocked visitors can be set to see a Textpattern's native, customizable error page. Error messages and status codes are fully configurable.
-* Alternatively, the plugin can be used to hide certain parts of a page, without invoking an error page.
+h2. Install
+
+Using "Composer":https://getcomposer.org:
+
+bc. $ composer require rah/rah_ip_range
 
 h2. Basics
 
 bc. <txp:rah_ip_range fromip="127.0.0.1" toip="127.0.0.1" method="deny">
-	...contained statements...
+        ...contained statements...
 </txp:rah_ip_range>
 
-p. The plugin introduces a new Textpattern tag, @<txp:rah_ip_range />@. The tag can be used to restrict visitor's access to certain parts of page template content or full pages based on their IP address. The tag takes an IP range, set by @fromip@ and @toip@ attributes. A visitor that is in the specified range will be either denied or allowed access to the content based on @method@ attribute's setting.
+The plugin introduces a new Textpattern tag, @<txp:rah_ip_range />@. The tag can be used to restrict visitor's access to certain parts of page template content or full pages based on their IP address. The tag takes an IP range, set by @fromip@ and @toip@ attributes. A visitor that is in the specified range will be either denied or allowed access to the content based on @method@ attribute's setting.
 
-p. The tag can be used both as a container and as a self-closing single tag. When used as single tag, the tag invokes an error page when the visitor is within denied range. As a container, the tag hides the wrapped content, but doesn't invoke an error page. A container can also take a "else":http://textpattern.net/wiki/index.php?title=else statement, which is served as an alternative content to denied visitors.
+The tag can be used both as a container and as a self-closing single tag. When used as single tag, the tag invokes an error page when the visitor is within denied range. As a container, the tag hides the wrapped content, but doesn't invoke an error page. A container can also take a "else":https://docs.textpattern.com/tags/else statement, which is served as an alternative content to denied visitors.
 
 h2. Attributes
 
-p. Attributes for @<txp:rah_ip_range />@ are as follows.
-
-p. *message*
-Error message shown to blocked visitors. The message can be displayed with the "error_message":http://textpattern.net/wiki/index.php?title=error_message tag.
+*message*
+Error message shown to blocked visitors.
 Example: @message="Sorry, we can not do that."@ Default: @"Forbidden."@
 
-p. *status*
+*status*
 HTTP error status code returned to blocked visitors. The option is ignored when the tag is used as a container.
 Example: @status="404"@ Default: @"403"@
 
-p. *fromip*
+*fromip*
 IP-range's starting IP (or partial IP). Default is unset.
 Example: @fromip="127.0.0.1"@ Default: @""@
 
-p. *toip*
+*toip*
 IP-range's ending IP (or partial IP). Default is unset.
 Example: @toip="127.0.0.100"@ Default: @""@
 
-p. *method*
+*method*
 Sets what to do to the visitor when IP is within the range. Either @deny@ or @allow@. When set to @deny@, all visitors within the range are blocked, and others outside the range are allowed to see the content. Value @allow@ is opposite to the @deny@.
 Example: @method="deny"@ Default: @"allow"@
 
 h2. Examples
 
-h3. Using the self-closing single tag
+h3. Using as a self-closing single tag
 
 bc. <txp:rah_ip_range fromip="127.0.0.1" toip="127.0.0.100" method="deny" message="Access denied." />
 
-p. Visitors within the range of 127.0.0.1-127.0.0.100 are blocked will see an error page.
+Visitors within the range of 127.0.0.1-127.0.0.100 are blocked will see an error page.
 
-h3. Using the tags as a container
+h3. Using as a container
 
 bc. <txp:rah_ip_range fromip="127.0.0.1" toip="127.0.0.100">
-	<a href="http://example.com">Important link</a>.
+    <a href="http://example.com">Important link</a>.
 <txp:else />
-	Link is hidden.
+    Link is hidden.
 </txp:rah_ip_range>
 
-p. Visitors within the range 127.0.0.1-127.0.0.100 will see an important link, while others won't. Instead they are treated with _"Link is hidden."_ message where the link would be.
+Visitors within the range 127.0.0.1-127.0.0.100 will see an important link, while others won't. Instead they are treated with _"Link is hidden."_ message where the link would be.
 
 h2. Changelog
 
 h3. Version 0.4 - 2012/07/13
 
-* Added: "else":http://textpattern.net/wiki/index.php?title=else (@<txp:else />@) tag support for container mode.
+* Added: "else":https://docs.textpattern.com/tags/else (@<txp:else />@) tag support for container mode.
 * Changed: default HTTP status to _403 Forbidden_ from _503 Service Unavailable_.
 * Changed: default message to @Forbidden.@, @403_forbidden@ l18n string.
-* Changed: @message@ attribute doesn't apply when tag is used as a container, instead of "else":http://textpattern.net/wiki/index.php?title=else can be used.
+* Changed: @message@ attribute doesn't apply when tag is used as a container, instead of "else":https://docs.textpattern.com/tags/else can be used.
 
 h3. Version 0.3 - 2011/06/29
 
