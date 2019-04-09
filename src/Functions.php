@@ -32,29 +32,33 @@ function rah_ip_range($atts, $thing = null)
 {
     extract(lAtts([
         'message' => gTxt('403_forbidden'),
-        'status' => '403',
-        'fromip' => '',
-        'toip' => '',
-        'method' => 'allow',
+        'status' => 403,
+        'from' => '',
+        'to' => '',
+        'allow' => 1,
+        'block' => 0,
     ], $atts));
 
-    $from = ip2long($fromip);
-    $to = ip2long($toip);
-    $user_ip = ip2long(remote_addr());
-    $check = $user_ip >= $from && $user_ip <= $to;
-    $allow = $method === 'allow';
+    $allow = $allow && !$block;
+    $ip = ip2long(remote_addr());
 
-    if ((!$allow && $check) || ($allow && !$check)) {
-        if ($thing === null) {
+    if ($from) {
+        $from = ip2long($from);
+    }
+
+    if ($to) {
+        $to = ip2long($to);
+    }
+
+    $valid = $allow && (!$from || $ip >= $from) && (!$to || $ip <= $to);
+
+    if ($thing === null) {
+        if (!$valid) {
             txp_die($message, $status);
         }
 
-        return parse(EvalElse($thing, false));
-    }
-
-    if ($thing === null) {
         return '';
     }
 
-    return parse(EvalElse($thing, true));
+    return parse(EvalElse($thing, $valid));
 }

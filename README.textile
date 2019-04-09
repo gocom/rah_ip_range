@@ -12,11 +12,11 @@ bc. $ composer require rah/rah_ip_range
 
 h2. Basics
 
-bc. <txp:rah_ip_range fromip="127.0.0.1" toip="127.0.0.1" method="deny">
-        ...contained statements...
-</txp:rah_ip_range>
+bc. <rah::ip_range deny from="127.0.0.1" to="127.0.0.1">
+    ...contained statements...
+</rah::ip_range>
 
-The plugin introduces a new Textpattern tag, @<txp:rah_ip_range />@. The tag can be used to restrict visitor's access to certain parts of page template content or full pages based on their IP address. The tag takes an IP range, set by @fromip@ and @toip@ attributes. A visitor that is in the specified range will be either denied or allowed access to the content based on @method@ attribute's setting.
+The plugin introduces a new Textpattern tag, @<rah::ip_range />@. The tag can be used to restrict visitor's access to certain parts of page template content or full pages based on their IP address. The tag takes an IP range, set by @from@ and @to@ attributes. A visitor that is in the specified range will be either denied or allowed access to the content based on @deny@ or @allow@ boolean attribute.
 
 The tag can be used both as a container and as a self-closing single tag. When used as single tag, the tag invokes an error page when the visitor is within denied range. As a container, the tag hides the wrapped content, but doesn't invoke an error page. A container can also take a "else":https://docs.textpattern.com/tags/else statement, which is served as an alternative content to denied visitors.
 
@@ -30,33 +30,37 @@ Example: @message="Sorry, we can not do that."@ Default: @"Forbidden."@
 HTTP error status code returned to blocked visitors. The option is ignored when the tag is used as a container.
 Example: @status="404"@ Default: @"403"@
 
-*fromip*
+*from*
 IP-range's starting IP (or partial IP). Default is unset.
-Example: @fromip="127.0.0.1"@ Default: @""@
+Example: @from="127.0.0.1"@ Default: @""@
 
-*toip*
+*to*
 IP-range's ending IP (or partial IP). Default is unset.
-Example: @toip="127.0.0.100"@ Default: @""@
+Example: @to="127.0.0.100"@ Default: @""@
 
-*method*
-Sets what to do to the visitor when IP is within the range. Either @deny@ or @allow@. When set to @deny@, all visitors within the range are blocked, and others outside the range are allowed to see the content. Value @allow@ is opposite to the @deny@.
-Example: @method="deny"@ Default: @"allow"@
+*allow*
+Allow visitors within the specified IP range. This is the default action.
+Example: @allow@ Default: @allow@
+
+*deny*
+Deny visitors within the specified IP range. Opposite of **allow**.
+Example: @deny@ Default: _undefined_
 
 h2. Examples
 
 h3. Using as a self-closing single tag
 
-bc. <txp:rah_ip_range fromip="127.0.0.1" toip="127.0.0.100" method="deny" message="Access denied." />
+bc. <rah::ip_range deny from="127.0.0.1" to="127.0.0.100" message="Access denied."/>
 
 Visitors within the range of 127.0.0.1-127.0.0.100 are blocked will see an error page.
 
 h3. Using as a container
 
-bc. <txp:rah_ip_range fromip="127.0.0.1" toip="127.0.0.100">
+bc. <rah::ip_range from="127.0.0.1" to="127.0.0.100">
     <a href="http://example.com">Important link</a>.
 <txp:else />
     Link is hidden.
-</txp:rah_ip_range>
+</rah::ip_range>
 
 Visitors within the range 127.0.0.1-127.0.0.100 will see an important link, while others won't. Instead they are treated with _"Link is hidden."_ message where the link would be.
 
@@ -65,6 +69,7 @@ h2. Changelog
 h3. Version 0.5.0 - upcoming
 
 * Register the tag.
+* Rename @fromip@ to @from@, @toip@ to @to@, split @method@ attribute to @allow@ and @deny@ boolean attributes.
 * Now requires Textpattern 4.6.0 or newer.
 
 h3. Version 0.4 - 2012/07/13
