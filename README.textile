@@ -70,7 +70,7 @@ h3. Version 0.5.0 - upcoming
 
 * Register the tag.
 * Rename @fromip@ to @from@, @toip@ to @to@, split @method@ attribute to @allow@ and @deny@ boolean attributes.
-* Now requires Textpattern 4.6.0 or newer.
+* Now requires Textpattern 4.7.0 or newer.
 
 h3. Version 0.4 - 2012/07/13
 

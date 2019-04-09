@@ -1,6 +1,6 @@
 {
     "name": "rah/rah_ip_range",
-    "description": "Block visitors based on IP ranges",
+    "description": "Block Textpattern CMS visitors based on IP ranges from within templates",
     "keywords": ["textpattern", "plugin"],
     "homepage": "https://github.com/gocom/rah_ip_range",
     "license": "GPL-2.0",
@@ -8,7 +8,7 @@
     "authors": [
         {
             "name": "Jukka Svahn",
-            "homepage": "https://rahforum.biz",
+            "homepage": "https://github.com/gocom",
             "role": "Developer"
         }
     ],
@@ -18,7 +18,7 @@
     },
     "require": {
         "php": ">=5.6.0",
-        "textpattern/lock": ">=4.6.0",
+        "textpattern/lock": ">=4.7.0",
         "textpattern/installer": "*"
     },
     "require-dev": {
