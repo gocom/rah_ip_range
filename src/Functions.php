@@ -1,7 +1,7 @@
 <?php
 
 /*
- * rah_ip_range - Memcached templates for Textpattern CMS
+ * rah_ip_range - Allow and block Textpattern CMS visitors based on an IP range
  * https://github.com/gocom/rah_ip_range
  *
  * Copyright (C) 2019 Jukka Svahn
