@@ -1,6 +1,6 @@
 h1. rah_ip_range
 
-"Packagist":https://packagist.org/packages/rah/rah_ip_range | "Issues":https://github.com/gocom/rah_ip_range/issues
+"Download":https://github.com/gocom/rah_ip_range/releases | "Packagist":https://packagist.org/packages/rah/rah_ip_range | "Issues":https://github.com/gocom/rah_ip_range/issues
 
 Rah_ip_range is a "Textpattern CMS":https://textpattern.com plugin for restricting visitors' access to certain parts of site content based on their IP addresses. The plugin introduces a little Textpattern tag that takes an IP address range and an executed action. The tag can either be used to hide parts of a page template or to invoke a customizable error page.
 
@@ -9,6 +9,8 @@ h2. Install
 Using "Composer":https://getcomposer.org:
 
 bc. $ composer require rah/rah_ip_range
+
+Or "download":https://github.com/gocom/rah_ip_range/releases an installer package.
 
 h2. Basics
 
