@@ -1,7 +1,7 @@
 <?php
 
 /*
- * rah_ip_range - Allow and block Textpattern CMS visitors based on an IP range
+ * rah_ip_range - Allow and deny Textpattern CMS visitors based on an IP range
  * https://github.com/gocom/rah_ip_range
  *
  * Copyright (C) 2019 Jukka Svahn
@@ -36,10 +36,10 @@ function rah_ip_range($atts, $thing = null)
         'from' => '',
         'to' => '',
         'allow' => 1,
-        'block' => 0,
+        'deny' => 0,
     ], $atts));
 
-    $allow = $allow && !$block;
+    $allow = $allow && !$deny;
     $ip = ip2long(remote_addr());
 
     if ($from) {
