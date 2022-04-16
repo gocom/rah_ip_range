@@ -68,7 +68,7 @@ Visitors within the range 127.0.0.1-127.0.0.100 will see an important link, whil
 
 h2. Changelog
 
-h3. Version 0.5.0 - upcoming
+h3. Version 0.5.0 - 2022/04/17
 
 * Register the tag for Textpattern >= 4.7.0 compatibility.
 * Rename @fromip@ to @from@, @toip@ to @to@, split @method@ attribute to @allow@ and @deny@ boolean attributes.
